@@ -12,11 +12,20 @@
 
 <body>
     <div class="container">
+        <div class="radio-group">
+            <div class="radio-btn">
+            <input type="radio" name="scanType" id="cont" value="cont" class="p-m-0 radio-circle">
+            <label for="cont" class="p-m-0">Continuous</label><br>
+            </div>
+            <div class="radio-btn">
+            <input type="radio" checked="checked" name="scanType" id="oneShot" value="oneShot" class="p-m-0 radio-circle">
+            <label for="oneShot" class="p-m-0">Oneshot</label><br>
+            </div>
+        </div>
+
         <div id="reader"></div>
         <div id="result"></div>
     </div>
-    <!-- <video id="video" width="720px" height="540px"></video> -->
-    
 </body>
 
 

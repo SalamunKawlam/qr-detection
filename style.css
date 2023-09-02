@@ -37,3 +37,32 @@ body{
 .success {
     color: seagreen;
 }
+
+.radio-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #a3a3a3;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #eee;
+}
+.radio-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.p-m-0{
+    padding: 0px;
+    margin: 0px;
+}
+.radio-circle{
+    height: 20px;
+    width: 20px;
+}
