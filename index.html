@@ -14,15 +14,21 @@
     <div class="container">
         <div class="radio-group">
             <div class="radio-btn">
-            <input type="radio" name="scanType" id="cont" value="cont" class="p-m-0 radio-circle">
-            <label for="cont" class="p-m-0">Continuous</label><br>
+                <input type="radio" name="scanType" id="cont" value="cont" class="p-m-0 radio-circle">
+                <label for="cont" class="p-m-0">Continuous</label><br>
             </div>
             <div class="radio-btn">
-            <input type="radio" checked="checked" name="scanType" id="oneShot" value="oneShot" class="p-m-0 radio-circle">
-            <label for="oneShot" class="p-m-0">Oneshot</label><br>
+                <input type="radio" checked="checked" name="scanType" id="oneShot" value="oneShot" class="p-m-0 radio-circle">
+                <label for="oneShot" class="p-m-0">Oneshot</label><br>
             </div>
         </div>
-
+        <div class="toggle-btn">
+            <span>Near Sense</span>
+            <label class="switch">
+                <input id="near" type="checkbox" onclick="check_status()">
+                <span class="slider round"></span>
+            </label>
+        </div>
         <div id="reader"></div>
         <div id="result"></div>
     </div>
