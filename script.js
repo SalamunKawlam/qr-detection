@@ -16,7 +16,7 @@ if ("AmbientLightSensor" in window) {
 
     sensor.addEventListener("reading", (event) => {
         light = sensor.illuminance;
-        // checkStatus();
+        console.log("Light LVL:"+light);
     });
 
     sensor.addEventListener("error", (event) => {
@@ -38,7 +38,7 @@ function checkStatus(){
         scanner.clear();
         result.innerHTML = `<h3>Light Level: ${light}</h3>`;
         }
-        else if (light > 100){
+        else{
             result.innerHTML = `<h3 class="success">Sensed Someone! Initiating Scanner...</h3>`;
             scanner.render(success, error);
         }
