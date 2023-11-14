@@ -36,7 +36,7 @@ function checkStatus(){
     else if (nearSense == 1) {
         if (light < 200){
         scanner.clear();
-        result.innerHTML = `<h3>Didn't Sense Anyone. On Standby...</h3>`;
+        result.innerHTML = `<h3>Didn't Sense Anyone. On Standby...<br> Light Level: ${light}</h3>`;
         }
         else if (light < 200){
             result.innerHTML = `<h3 class="success">Sensed Someone! Initiating Scanner...</h3>`;
