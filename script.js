@@ -16,7 +16,7 @@ if ("AmbientLightSensor" in window) {
 
     sensor.addEventListener("reading", (event) => {
         light = sensor.illuminance;
-        checkStatus();
+        // checkStatus();
     });
 
     sensor.addEventListener("error", (event) => {
@@ -34,11 +34,11 @@ function checkStatus(){
     }
 
     else if (nearSense == 1) {
-        if (light < 200){
+        if (light < 100){
         scanner.clear();
         result.innerHTML = `<h3>Light Level: ${light}</h3>`;
         }
-        else if (light < 200){
+        else if (light > 100){
             result.innerHTML = `<h3 class="success">Sensed Someone! Initiating Scanner...</h3>`;
             scanner.render(success, error);
         }
