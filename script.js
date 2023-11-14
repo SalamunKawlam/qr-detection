@@ -8,26 +8,25 @@ let light = 0;
 // const minRes = Math.min(scrWidth, scrHeight);
 let scanRegion = document.getElementById("reader").offsetWidth;
 
-if ("AmbientLightSensor" in window) {
-    const sensor = new AmbientLightSensor();
-
-    sensor.addEventListener("reading", (event) => {
-        light = sensor.illuminance;
-        // console.log("Light Level: "+light);
-    });
-
-    sensor.addEventListener("error", (event) => {
-      console.log(event.error.name, event.error.message);
-    });
-    sensor.start();
-}
-
 const scanner = new Html5QrcodeScanner('reader',{qrbox: {width: scanRegion*0.5, height: scanRegion*0.5}, fps: 30});
 let type = document.getElementsByName('scanType');
 
 function checkStatus(){
     near.checked?nearSense =1 : nearSense = 0;
     console.log(nearSense);
+
+    if ("AmbientLightSensor" in window) {
+        const sensor = new AmbientLightSensor();
+    
+        sensor.addEventListener("reading", (event) => {
+            light = sensor.illuminance;
+        });
+    
+        sensor.addEventListener("error", (event) => {
+          console.log(event.error.name, event.error.message);
+        });
+        sensor.start();
+    }
     
     if (nearSense == 0){
         scanner.render(success, error);
