@@ -11,22 +11,23 @@ let scanRegion = document.getElementById("reader").offsetWidth;
 const scanner = new Html5QrcodeScanner('reader',{qrbox: {width: scanRegion*0.5, height: scanRegion*0.5}, fps: 30});
 let type = document.getElementsByName('scanType');
 
+if ("AmbientLightSensor" in window) {
+    const sensor = new AmbientLightSensor();
+
+    sensor.addEventListener("reading", (event) => {
+        light = sensor.illuminance;
+        checkStatus();
+    });
+
+    sensor.addEventListener("error", (event) => {
+      console.log(event.error.name, event.error.message);
+    });
+    sensor.start();
+}
+
 function checkStatus(){
     near.checked?nearSense =1 : nearSense = 0;
     console.log(nearSense);
-
-    if ("AmbientLightSensor" in window) {
-        const sensor = new AmbientLightSensor();
-    
-        sensor.addEventListener("reading", (event) => {
-            light = sensor.illuminance;
-        });
-    
-        sensor.addEventListener("error", (event) => {
-          console.log(event.error.name, event.error.message);
-        });
-        sensor.start();
-    }
     
     if (nearSense == 0){
         scanner.render(success, error);
