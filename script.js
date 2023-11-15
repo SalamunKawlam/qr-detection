@@ -5,7 +5,7 @@ let light = 0;
 // const scrWidth = screen.width;
 // const scrHeight = screen.height;
 // const minRes = Math.min(scrWidth, scrHeight);
-let scanRegion = document.getElementById("reader").offsetWidth;
+let scanRegion = Math.floor(document.getElementById("reader").clientWidth);
 
 const scanner = new Html5QrcodeScanner('reader',{qrbox: {width: scanRegion*0.5, height: scanRegion*0.5}, fps: 30});
 let type = document.getElementsByName('scanType');
@@ -25,7 +25,7 @@ if ("AmbientLightSensor" in window) {
 }
 
 function checkStatus(){
-    near.checked?nearSense =1 : nearSense = 0;
+    near.checked?nearSense = 1 : nearSense = 0;
     console.log("NearSense: "+nearSense);
     console.log("ScanRegion: "+scanRegion);
     
@@ -44,15 +44,15 @@ function checkStatus(){
         else{
             result.innerHTML = `<h3>No one nearby! On Standby <br>Light Level: ${light}</h3>`;
         }
-
+    }
     // Disable the switch for 2 seconds
     near.disabled = true;
     near.classList.add('disabled'); // Add the disabled class for styling
+    
     setTimeout(() => {
         near.classList.remove('disabled'); // Remove the disabled class
         near.disabled = false; // Re-enable the switch after 2 seconds
-        }, 2000);
-    }
+        }, 4000);
 }
 
 checkStatus();
@@ -66,8 +66,8 @@ function success(result) {
             console.log(count);
             result.innerHTML = `<h3 class="success">QR Detected Successfully</h3> <a href="${result}">${result}</a> <p>${count}</p>`;
             playaudio();
-            }
         }
+    }
         
     else if (type[0].checked){
         console.log(count);
