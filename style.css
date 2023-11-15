@@ -141,9 +141,11 @@ body{
     }
 
     .switch input:disabled + .slider {
+        cursor: not-allowed;
         background-color: #ccc; /* Change the background color for the disabled state */
     }
     
     .switch input:disabled + .slider:before {
+        cursor: not-allowed;
         background-color: #aaa; /* Change the color of the slider handle for the disabled state */
     }
