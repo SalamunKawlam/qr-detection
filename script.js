@@ -15,7 +15,8 @@ if ("AmbientLightSensor" in window) {
 
     sensor.addEventListener("reading", (event) => {
         light = sensor.illuminance;
-        result.innerHTML = `<h3>Light Level: ${light}</h3>`;
+        checkStatus();
+        // result.innerHTML = `<h3>Light Level: ${light}</h3>`;
     });
 
     sensor.addEventListener("error", (event) => {
