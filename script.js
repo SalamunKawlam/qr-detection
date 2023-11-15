@@ -28,21 +28,21 @@ function checkStatus(){
             sensor.addEventListener("reading", (event) => {
                 light = sensor.illuminance;
                 // result.innerHTML = `<h3>Light Level: ${light}</h3>`;
+
+                if (light > 100){
+                    result.innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
+                    scanner.render(success, error);
+                }
+        
+                else{
+                    result.innerHTML = `<h3>No one nearby! On Standby <br>Light Level: ${light}</h3>`;
+                }
             });
         
             sensor.addEventListener("error", (event) => {
                 console.log(event.error.name, event.error.message);
             });
             sensor.start();
-        }
-
-        if (light > 100){
-            result.innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
-            scanner.render(success, error);
-        }
-
-        else{
-            result.innerHTML = `<h3>No one nearby! On Standby <br>Light Level: ${light}</h3>`;
         }
     }
 
