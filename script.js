@@ -29,7 +29,7 @@ checkStatus = () => {
             sensor.addEventListener("reading", (event) => {
                 light = sensor.illuminance;
                 document.getElementById("lightData").innerHTML = `<h5>Light Level: ${light}</h5>`;
-                if (light > 100 && lightPrev<=100){
+                if ((light > 100 && lightPrev<=100)||(light <= 100 && lightPrev>100)){
                     dynamicScanner();
                 }
                 lightPrev = light;
