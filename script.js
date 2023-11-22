@@ -13,24 +13,6 @@ let scanRegion = Math.floor(document.getElementById("reader").clientWidth);
 const scanner = new Html5QrcodeScanner('reader',{qrbox: {width: scanRegion*0.5, height: scanRegion*0.5}, fps: 30});
 let type = document.getElementsByName('scanType');
 
-if ("AmbientLightSensor" in window) {
-    const sensor = new AmbientLightSensor();
-
-    sensor.addEventListener("reading", (event) => {
-        light = sensor.illuminance;
-        document.getElementById("lightData").innerHTML = `<h5>Light Level: ${light}</h5>`;
-        if (light > 100 && lightPrev<=100){
-            checkStatus();
-        }
-        lightPrev = light;
-    });
-
-    sensor.addEventListener("error", (event) => {
-        console.log(event.error.name, event.error.message);
-    });
-    sensor.start();
-}
-
 checkStatus = () => {
     near.checked?nearSense = 1 : nearSense = 0;
     console.log("NearSense: "+nearSense);
@@ -42,7 +24,23 @@ checkStatus = () => {
     }
 
     else if (nearSense == 1) {
-        dynamicScanner();
+        if ("AmbientLightSensor" in window) {
+            const sensor = new AmbientLightSensor();
+        
+            sensor.addEventListener("reading", (event) => {
+                light = sensor.illuminance;
+                document.getElementById("lightData").innerHTML = `<h5>Light Level: ${light}</h5>`;
+                if (light > 100 && lightPrev<=100){
+                    dynamicScanner();
+                }
+                lightPrev = light;
+            });
+        
+            sensor.addEventListener("error", (event) => {
+                console.log(event.error.name, event.error.message);
+            });
+            sensor.start();
+        }
     }
 
     // Disable the switch for 2 seconds
