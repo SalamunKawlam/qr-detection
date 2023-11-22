@@ -60,16 +60,15 @@ checkStatus();
 
 dynamicScanner = () => {
     if (light > 100){
-        document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
         setTimeout(() => {
             scanner.render(success, error);
         }, 1500);
-        
+        document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
     }
 
     else{
-        document.getElementById("result").innerHTML = `<h3>No one nearby! On Standby</h3>`;
         scanner.clear();
+        document.getElementById("result").innerHTML = `<h3>No one nearby! On Standby</h3>`;
     }
 }
 
