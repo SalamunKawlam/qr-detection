@@ -20,8 +20,10 @@ body{
 }
 
 #reader {
-    width: 80%;
+    width: 90%;
     max-width: 720px;
+    height: 40vh;
+    min-height: 320px; 
 }
 
 #result {
