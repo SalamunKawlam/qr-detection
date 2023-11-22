@@ -63,7 +63,7 @@ dynamicScanner = () => {
         setTimeout(() => {
             scanner.render(success, error);
             document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
-        }, 1500);
+        }, 2000);
     }
 
     else{
