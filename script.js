@@ -9,7 +9,7 @@ let lightPrev = 0;
 // const minRes = Math.min(scrWidth, scrHeight);
 let scanRegion = Math.floor(document.getElementById("reader").clientWidth);
 
-const scanner = new Html5QrcodeScanner('reader',{qrbox: {width: scanRegion*0.5, height: scanRegion*0.5}, fps: 30});
+const scanner = new Html5QrcodeScanner('reader',{qrbox: {width: scanRegion*0.5, height: scanRegion*0.5}, fps: 30, });
 let type = document.getElementsByName('scanType');
 
 checkStatus = () => {
@@ -61,7 +61,10 @@ checkStatus();
 dynamicScanner = () => {
     if (light > 100){
         document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
-        scanner.render(success, error);
+        setTimeout(() => {
+            scanner.render(success, error);
+        }, 1500);
+        
     }
 
     else{
