@@ -22,6 +22,7 @@ checkStatus = () => {
     }
 
     else if (nearSense == 1) {
+        scanner.clear();
         if ("AmbientLightSensor" in window) {
             const sensor = new AmbientLightSensor();
         
@@ -35,6 +36,7 @@ checkStatus = () => {
             });
         
             sensor.addEventListener("error", (event) => {
+                dynamicScanner();
                 console.log(event.error.name, event.error.message);
             });
             sensor.start();
@@ -55,8 +57,7 @@ checkStatus();
 dynamicScanner = () => {
     if (light > 100){
         result.innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
-        canner.render(success, error);
-
+        scanner.render(success, error);
     }
 
     else{
