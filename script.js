@@ -68,9 +68,6 @@ dynamicScanner = () => {
         document.getElementById("result").innerHTML = `<h3>No one nearby! On Standby</h3>`;
         scanner.clear();
     }
-
-    setTimeout(() => {
-    }, 1000);
 }
 
 function success(result) {
