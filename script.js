@@ -44,7 +44,7 @@ checkStatus = () => {
         }
     }
 
-    // Disable the switch for 2 seconds
+    // Disable the switch for 4 seconds
     near.disabled = true;
     near.classList.add('disabled'); // Add the disabled class for styling
     setTimeout(() => {
@@ -65,6 +65,9 @@ dynamicScanner = () => {
         document.getElementById("result").innerHTML = `<h3>No one nearby! On Standby</h3>`;
         scanner.clear();
     }
+
+    setTimeout(() => {
+    }, 1000);
 }
 
 function success(result) {
