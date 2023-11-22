@@ -18,6 +18,7 @@ if ("AmbientLightSensor" in window) {
 
     sensor.addEventListener("reading", (event) => {
         light = sensor.illuminance;
+        document.getElementById("lightData").innerHTML = `<h5>Light Level: ${light}</h5>`;
         if (light > 100 && lightPrev<=100){
             checkStatus();
         }
@@ -65,7 +66,7 @@ dynamicScanner = () => {
     }
 
     else{
-        result.innerHTML = `<h3>No one nearby! On Standby <br>Light Level: ${light}</h3>`;
+        result.innerHTML = `<h3>No one nearby! On Standby</h3>`;
         scanner.clear();
         camOn = false;
     }
