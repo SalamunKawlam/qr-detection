@@ -3,7 +3,6 @@ let result = document.getElementById('result');
 let nearSense = 0;
 let light = 0;
 let count = 0;
-let camOn = false;
 let lightPrev = 0;
 // const scrWidth = screen.width;
 // const scrHeight = screen.height;
@@ -20,7 +19,6 @@ checkStatus = () => {
     
     if (nearSense == 0){
         scanner.render(success, error);
-        camOn = true;
     }
 
     else if (nearSense == 1) {
@@ -57,16 +55,13 @@ checkStatus();
 dynamicScanner = () => {
     if (light > 100){
         result.innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
-        if (!camOn) {
-            canner.render(success, error);
-            camOn = true;
-        }
+        canner.render(success, error);
+
     }
 
     else{
         result.innerHTML = `<h3>No one nearby! On Standby</h3>`;
         scanner.clear();
-        camOn = false;
     }
 }
 
