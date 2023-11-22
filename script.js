@@ -19,17 +19,20 @@ checkStatus = () => {
     
     if (nearSense == 0){
         scanner.render(success, error);
+        document.getElementById("radio-grp").classList.remove("layer-hidden");
     }
 
     else if (nearSense == 1) {
+        document.getElementById("radio-grp").classList.add("layer-hidden");
         scanner.clear();
         dynamicScanner();
+
         if ("AmbientLightSensor" in window) {
             const sensor = new AmbientLightSensor();
         
             sensor.addEventListener("reading", (event) => {
                 light = sensor.illuminance;
-                document.getElementById("lightData").innerHTML = `<h5>Light Level: ${light}</h5>`;
+                document.getElementById("lightData").innerHTML = `<h4>Light Level: ${light}</h4>`;
                 if ((light > 100 && lightPrev <= 100)||(light < 100 && lightPrev >= 100)){
                     dynamicScanner();
                 }

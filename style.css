@@ -21,6 +21,7 @@ body{
 
 #reader {
     width: 80%;
+    align-self: 1;
     max-width: 720px;
 }
 
@@ -148,4 +149,12 @@ body{
     .switch input:disabled + .slider:before {
         cursor: not-allowed;
         background-color: #aaa; /* Change the color of the slider handle for the disabled state */
+    }
+
+    .layer-hidden {
+        display: none;
+    }
+
+    .layer-visible {
+        display: flex;
     }
