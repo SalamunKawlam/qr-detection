@@ -18,6 +18,7 @@ checkStatus = () => {
     console.log("ScanRegion: "+scanRegion);
     
     if (nearSense == 0){
+        scanner.clear();
         scanner.render(success, error);
         document.getElementById("radio-grp").classList.remove("layer-hidden");
     }
@@ -39,7 +40,6 @@ checkStatus = () => {
         
             sensor.addEventListener("error", (event) => {
                 document.getElementById("result").innerHTML = `<h3>Ambient Light Sensor Not found</h3>`;
-                dynamicScanner();
                 console.log(event.error.name, event.error.message);
             });
             sensor.start();
