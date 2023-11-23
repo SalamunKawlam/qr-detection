@@ -1,5 +1,5 @@
 const near = document.getElementById('near');
-let result = document.getElementById('result');
+// let result = document.getElementById('result');
 let nearSense = 0;
 let light = 0;
 let count = 0;
@@ -91,7 +91,7 @@ function success(result) {
 
 function error() {
     count = 0;
-    result.innerHTML = `<h3 class="error">QR Not Found</h3>`;
+    document.getElementById("result").innerHTML = `<h3 class="error">QR Not Found</h3>`;
 }
 
 
