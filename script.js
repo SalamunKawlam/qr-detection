@@ -63,6 +63,7 @@ dynamicScanner = async () => {
         // setTimeout(() => {
         //     scanner.render(success, error);
         // }, 2000);
+        await scanner.clear();
         await scanner.render(success, error);
     }
 
