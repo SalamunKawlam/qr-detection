@@ -57,12 +57,13 @@ checkStatus = () => {
 
 checkStatus();
 
-dynamicScanner = () => {
+dynamicScanner = async () => {
     if (light > 100){
         document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
-        setTimeout(() => {
-            scanner.render(success, error);
-        }, 2000);
+        // setTimeout(() => {
+        //     scanner.render(success, error);
+        // }, 2000);
+        await scanner.render(success, error);
     }
 
     else{
