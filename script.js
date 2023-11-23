@@ -51,7 +51,7 @@ checkStatus = () => {
     near.classList.add('disabled'); // Add the disabled class for styling
     setTimeout(() => {
         near.classList.remove('disabled'); // Remove the disabled class
-        near.disabled = false; // Re-enable the switch after 2 seconds
+        near.disabled = false; // Re-enable the switch after 4 seconds
     }, 4000);
 }
 
