@@ -24,8 +24,6 @@ checkStatus = () => {
 
     else if (nearSense == 1) {
         document.getElementById("radio-grp").classList.add("layer-hidden");
-        scanner.clear();
-        dynamicScanner();
 
         if ("AmbientLightSensor" in window) {
             const sensor = new AmbientLightSensor();
@@ -40,6 +38,7 @@ checkStatus = () => {
             });
         
             sensor.addEventListener("error", (event) => {
+                document.getElementById("result").innerHTML = `<h3>Ambient Light Sensor Not found</h3>`;
                 dynamicScanner();
                 console.log(event.error.name, event.error.message);
             });
@@ -60,9 +59,9 @@ checkStatus();
 
 dynamicScanner = () => {
     if (light > 100){
+        document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
         setTimeout(() => {
             scanner.render(success, error);
-            document.getElementById("result").innerHTML = `<h3 class="success">Sensed someone! Initiating Scanner...</h3>`;
         }, 2000);
     }
 
